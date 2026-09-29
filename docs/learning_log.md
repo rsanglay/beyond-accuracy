@@ -154,3 +154,54 @@ Can a Tuesday feature use an average calculated with later years? What if the av
 The learner confirmed the future-inclusive average is look-ahead bias, then answered:
 > no
 when asked whether an average using only completed sessions before Tuesday contains future information. This establishes introductory timing understanding, with independent explanations to revisit.
+
+## Phase 3 output check — Prior-volume baseline
+
+### Concept learned
+`shift(1)` excludes the current observation from the prior-volume comparison baseline.
+
+### Explanation in my own words
+> it moves the baseline back
+
+### Important formula
+relative_volume[t] = V[t] / mean(V[t-5], ..., V[t-1]).
+
+### Common mistake
+Initially attributed the shift to undefined early rows. Clarified that warm-up and exclusion of today's volume are different concerns. Including today's volume after its session ends would not itself be look-ahead bias, but would change the intended baseline.
+
+### How we used it
+Shift volume before calculating its rolling mean. Phase 3 PR approved and merged.
+
+### Interview question
+Why shift before calculating the volume baseline?
+
+### My answer
+The learner's quotation above was accepted after confirming that the unshifted rows 2–6 include today (row 6).
+
+## Phase 4 — Target alignment
+
+### Concept learned
+Today's features pair with the next session's outcome; unknown outcomes are missing; training must wait for label availability.
+
+### Explanation in my own words
+> wednesday comes after tuesday
+
+> wait for wednesday close
+
+### Important formula
+next_return[t] = P[t+1]/P[t] - 1.
+Known target = 1 if next_return > 0, otherwise 0. Unknown next_return has no class.
+
+### Common mistake
+Initially selected Monday for Tuesday's next outcome and class 0 for an unobserved final outcome. Corrected through smaller timing examples: Tuesday features pair with Tuesday-to-Wednesday return, and an unknown final label is undefined. Putting tomorrow's actual outcome in today's features is look-ahead bias.
+
+### How we used it
+Separate target artifact with nullable integer labels, next-session dates, and source hashes. Tests check alignment and that future changes affect targets without changing earlier features. Walk-forward training-admission enforcement remains Phase 6 work.
+
+### Interview question
+Can Tuesday's labelled example train a model on Tuesday evening?
+
+### My answer
+> wait for wednesday close
+
+Introductory checkpoint passed. Independent code/output explanation remains to be checked.
