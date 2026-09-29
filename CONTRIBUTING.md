@@ -15,4 +15,4 @@ Keep PRs small enough to understand. Use one meaningful change or learning incre
 
 A public repository does not imply that credentials, local data, or unreviewed generated outputs belong in Git. Inspect the diff before publishing.
 
-GitHub Actions provides automated checks. This documented process alone does not enforce branch protection in GitHub settings.
+Run validation locally and record results in the PR. GitHub Actions is disabled in repository settings and the workflow is manual-only in code. Do not enable or dispatch it without the project owner explicitly requesting a run. This documented process alone does not enforce branch protection in GitHub settings.

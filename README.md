@@ -38,7 +38,7 @@ The CLI validates settings and prepares market-data snapshots. It does not run a
 ## Reproducibility
 `requirements.lock` pins resolved dependency versions. Snapshots record input-file hashes, request settings, code commit and dirty status, Python/platform details, and installed package versions. Retain the actual snapshot: downloading again can yield revised history. A random seed alone does not reproduce a study. The lock does not contain artifact hashes, and the container base is not pinned by digest.
 
-GitHub Actions installs the package and checks the tests and CLI on Python 3.12. The Dockerfile provides the same configuration-check entry point:
+Run tests locally and record their results in each PR. GitHub Actions is disabled; its workflow supports manual dispatch only and must not be enabled or run without an explicit owner request. The Dockerfile provides the same configuration-check entry point:
 
 ```bash
 docker build -t beyond-accuracy .
@@ -51,7 +51,7 @@ See [the learning log](docs/learning_log.md), [concept checklist](docs/concepts.
 
 ## Contributing
 
-Changes follow feature branches, pull requests, automated checks, and owner review before merging. See [the development workflow](CONTRIBUTING.md).
+Changes follow feature branches, pull requests, local validation, and owner review before merging. See [the development workflow](CONTRIBUTING.md).
 
 ## Prepare market data
 
