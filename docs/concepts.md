@@ -11,13 +11,13 @@ Statuses: NOT STARTED, LEARNING, UNDERSTOOD, NEEDS REVIEW. Understanding is reco
 | simple returns | NEEDS REVIEW | Reasoning understood; percentage arithmetic improved after guided practice |
 | log returns | LEARNING | Distinguishes labels and zero return; additivity not yet checked |
 | compounding | NOT STARTED | Awaiting checkpoint |
-| volatility | NOT STARTED | Awaiting checkpoint |
+| volatility | NEEDS REVIEW | Identifies swings; cancellation and zero-spread arithmetic required guided correction |
 | covariance | NOT STARTED | Awaiting checkpoint |
-| momentum | NOT STARTED | Awaiting checkpoint |
-| rolling windows | NOT STARTED | Awaiting checkpoint |
-| data leakage | LEARNING | Understands future-price example; broader cases pending |
+| momentum | UNDERSTOOD | Calculated Tuesday-to-Thursday momentum as 5.88% |
+| rolling windows | UNDERSTOOD | Identified rolling sessions and prior-volume baseline after warm-up clarification |
+| data leakage | LEARNING | Future-inclusive mean and imputation examples understood after hints |
 | look-ahead bias | UNDERSTOOD | Introductory availability examples answered correctly; harder cases pending |
-| feature engineering | NOT STARTED | Awaiting checkpoint |
+| feature engineering | LEARNING | Introductory checkpoint passed; implementation/output walkthrough next |
 | classification | NOT STARTED | Awaiting checkpoint |
 | Logistic Regression | NOT STARTED | Awaiting checkpoint |
 | Random Forest | NOT STARTED | Awaiting checkpoint |
@@ -43,3 +43,7 @@ Statuses: NOT STARTED, LEARNING, UNDERSTOOD, NEEDS REVIEW. Understanding is reco
 | OHLCV | LEARNING | Definitions introduced; individual fields not yet tested |
 | corporate actions and adjusted prices | UNDERSTOOD | Explained false split loss; distinguish adjusted prices from trade prices in later phases |
 | split versus diversification | NEEDS REVIEW | Correctly computed loss after guided correction |
+| lagged returns | UNDERSTOOD | Identified past return availability |
+| RSI | LEARNING | Descriptive meaning understood; ratio and seeding arithmetic need reinforcement |
+| relative volume | UNDERSTOOD | Calculated ratio 2 and identified prior-only baseline |
+| sample standard deviation arithmetic | NEEDS REVIEW | Squaring reason understood after guided examples |

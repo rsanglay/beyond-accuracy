@@ -4,7 +4,7 @@
 
 An incremental quantitative research and learning project investigating whether better market-direction predictions translate into better trading outcomes after costs.
 
-**Status: Phase 2 market-data pipeline. No trained models, backtests, or strategy performance findings yet.**
+**Status: Phase 3 feature-engineering pipeline. No trained models, backtests, or strategy performance findings yet.**
 
 ## Planned research
 SPY; Logistic Regression, Random Forest, XGBoost, and LightGBM; simple benchmarks; expanding-window walk-forward evaluation; realistic execution timing; 0/5/10/25 bps transaction costs; predictive and financial metrics; yearly stability, regime analysis, statistical uncertainty, and robustness checks. All choices and claims will be documented as the project progresses.
@@ -63,3 +63,11 @@ beyond-accuracy verify-data data/snapshots/<snapshot-id>
 The initial request covers 2010-01-01 inclusive through 2026-01-01 exclusive. This is a data acquisition window, not a selected train/test split. Each download creates a separate snapshot with `provider.csv`, `returns.csv`, and `metadata.json`. Offline verification checks file hashes, data validity, and recomputed returns.
 
 The first return is missing because the snapshot has no preceding price. No missing prices or sessions are filled. CI uses synthetic fixtures and does not require Yahoo access. See [market-data conventions and limitations](docs/market_data.md).
+
+## Build features locally
+
+```bash
+beyond-accuracy build-features --snapshot data/snapshots/<snapshot-id> --config configs/features.json
+```
+
+This verifies the existing snapshot and calculates trailing returns, momentum, moving-average diagnostics, sample volatility, Wilder RSI, and relative volume. No network request is needed. Early undefined values are preserved, and each output directory records settings and provenance. See [feature definitions and timing](docs/features.md). No targets or models are implemented yet.

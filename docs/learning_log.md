@@ -91,3 +91,66 @@ At Tuesday's open, can Wednesday's opening price be used merely because it appea
 > no because its lookahead bias
 
 Other correct answers included $100 to $103 = 3%; unchanged prices give zero simple and log returns; two $45 shares total $90; $6 on $200 = 3%; $5 on $500 = 1% after guided practice. Log-return additivity was introduced, not demonstrated independently. OHLCV meanings were introduced but not individually tested.
+
+## Phase 2 output check
+
+### Concept learned
+First-return availability and decimal-to-percentage conversion.
+
+### Explanation in my own words
+> its undefined as we couldnt get a value and 0.2647%
+
+### Important formula
+0.002647 * 100 = 0.2647%.
+
+### Common mistake
+Calling the first return zero. The first price exists, but the snapshot lacks a preceding price.
+
+### How we used it
+Preserved the first missing return and inspected real snapshot output.
+
+### Interview question
+Why is the first return undefined?
+
+### My answer
+The learner's quotation above was clarified: specifically, the previous price is unavailable within the snapshot. The percentage conversion was correct independently.
+
+## Phase 3 — Features and information timing
+
+### Concept learned
+Lagged returns, momentum, moving averages, trailing windows, sample volatility, Wilder RSI, relative volume, warm-up periods, and future-data leakage. Teaching checkpoint passed with arithmetic reinforcement still needed. Code/output review is next.
+
+### Explanation in my own words
+On higher volatility:
+> the one that swings as its not identical.
+
+On why distances are squared:
+> to prevent cancelation
+
+On RSI meaning:
+> recent balance of gains and losses
+
+For the baseline on row 6:
+> 1-5
+
+### Important formula
+- Momentum: P[t]/P[t-n] - 1. The learner calculated 108/102 - 1 as approximately 5.88%.
+- Moving average: sum of n closing prices divided by n; 100, 102, 104 gives 102.
+- Sample volatility: sqrt(sum((r-mean(r))^2)/(n-1)); -3%, +1%, +5% yields 4 percentage points.
+- RSI: 100 - 100/(1 + average_gain/average_loss), with Wilder smoothing after the initial mean of n changes.
+- Relative volume: current volume / prior n-session mean volume; 20/10 = 2.
+- n prices contain n-1 consecutive changes.
+
+### Common mistake
+Initially confused cancellation with no variation and zero standard deviation with zero average return. After simpler examples, correctly identified identical returns as zero volatility and swings as higher volatility. Initially placed an inclusive five-price average on row 6; corrected to row 5. Prior-five volume baseline first appears on row 6. Initially attributed invalid future imputation to missingness rather than availability; clarified that future-inclusive averages leak even without missing data. Initially interpreted high RSI as nearly guaranteeing reversal; corrected that prices could keep rising. RSI arithmetic and n versus n-1 needed guided practice.
+
+### How we used it
+Implemented explicit trailing functions and configuration, complete-window NaNs, exact Wilder initialisation, and local artifact provenance. Tests compare hand-worked examples and ensure changing/adding future data does not alter past features. Moving-average levels are diagnostic only; model input selection is deferred. No targets, models, or trading execution are implemented.
+
+### Interview question
+Can a Tuesday feature use an average calculated with later years? What if the average uses only earlier completed sessions?
+
+### My answer
+The learner confirmed the future-inclusive average is look-ahead bias, then answered:
+> no
+when asked whether an average using only completed sessions before Tuesday contains future information. This establishes introductory timing understanding, with independent explanations to revisit.

@@ -4,7 +4,7 @@ Complete each conceptual checkpoint before implementing its phase. Workflow: exp
 
 1. Software architecture — checkpoint passed; foundation implemented.
 2. Market data — introductory checkpoint passed; pipeline implemented on a review branch. Percentage arithmetic remains a practice topic.
-3. Feature engineering — lagged returns, momentum, moving averages, volatility, RSI, volume, rolling windows, information availability.
+3. Feature engineering — introductory teaching checkpoint passed; implemented on a review branch. Output walkthrough next; volatility and RSI arithmetic remain practice topics.
 4. Targets — shifted outcomes and leakage checks.
 5. Benchmarks — buy and hold, majority classifier, momentum, naive predictions.
 6. Expanding-window walk-forward validation — chronology and label availability.

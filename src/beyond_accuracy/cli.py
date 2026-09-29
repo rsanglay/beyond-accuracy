@@ -17,6 +17,10 @@ def main() -> None:
     download.add_argument("--output", type=Path, default=Path("data/snapshots"))
     verify = commands.add_parser("verify-data", help="Verify a snapshot offline")
     verify.add_argument("snapshot", type=Path)
+    features = commands.add_parser("build-features", help="Build trailing features from a verified local snapshot")
+    features.add_argument("--snapshot", type=Path, required=True)
+    features.add_argument("--config", type=Path, required=True)
+    features.add_argument("--output", type=Path, default=Path("results/features"))
     args = parser.parse_args()
     try:
         if args.command == "check-config":
@@ -26,6 +30,11 @@ def main() -> None:
             from beyond_accuracy.snapshots import save_snapshot
             config = load_data_config(args.config)
             result = {"snapshot": str(save_snapshot(download_bars(config), config, args.output))}
+        elif args.command == "build-features":
+            from beyond_accuracy.features import load_feature_config
+            from beyond_accuracy.feature_artifacts import prepare_features
+            config = load_feature_config(args.config)
+            result = {"features": str(prepare_features(args.snapshot, config, args.output))}
         else:
             from beyond_accuracy.snapshots import verify_snapshot
             metadata = verify_snapshot(args.snapshot)
