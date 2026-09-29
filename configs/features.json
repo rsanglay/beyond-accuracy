@@ -1,0 +1,8 @@
+{
+  "return_lags": [1, 2, 5],
+  "momentum_windows": [5, 10, 20],
+  "moving_average_windows": [5, 20],
+  "volatility_windows": [5, 20],
+  "rsi_window": 14,
+  "volume_windows": [5, 20]
+}
