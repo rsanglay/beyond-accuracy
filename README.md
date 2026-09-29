@@ -4,7 +4,7 @@
 
 An incremental quantitative research and learning project investigating whether better market-direction predictions translate into better trading outcomes after costs.
 
-**Status: Phase 3 feature-engineering pipeline. No trained models, backtests, or strategy performance findings yet.**
+**Status: Phase 4 target-alignment pipeline. No trained models, backtests, or strategy performance findings yet.**
 
 ## Planned research
 SPY; Logistic Regression, Random Forest, XGBoost, and LightGBM; simple benchmarks; expanding-window walk-forward evaluation; realistic execution timing; 0/5/10/25 bps transaction costs; predictive and financial metrics; yearly stability, regime analysis, statistical uncertainty, and robustness checks. All choices and claims will be documented as the project progresses.
@@ -70,4 +70,12 @@ The first return is missing because the snapshot has no preceding price. No miss
 beyond-accuracy build-features --snapshot data/snapshots/<snapshot-id> --config configs/features.json
 ```
 
-This verifies the existing snapshot and calculates trailing returns, momentum, moving-average diagnostics, sample volatility, Wilder RSI, and relative volume. No network request is needed. Early undefined values are preserved, and each output directory records settings and provenance. See [feature definitions and timing](docs/features.md). No targets or models are implemented yet.
+This verifies the existing snapshot and calculates trailing returns, momentum, moving-average diagnostics, sample volatility, Wilder RSI, and relative volume. No network request is needed. Early undefined values are preserved, and each output directory records settings and provenance. See [feature definitions and timing](docs/features.md). Targets are prepared separately; no models are implemented yet.
+
+## Build next-session targets
+
+```bash
+beyond-accuracy build-targets --snapshot data/snapshots/<snapshot-id>
+```
+
+Creates separate historical outcomes and records the session after which each becomes known. Positive next-session adjusted returns are class 1; zero/negative returns are class 0; the final unknown stays missing. See [target alignment and timing](docs/targets.md). These labels are not trading returns.

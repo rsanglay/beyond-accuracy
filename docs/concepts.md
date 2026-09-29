@@ -47,3 +47,6 @@ Statuses: NOT STARTED, LEARNING, UNDERSTOOD, NEEDS REVIEW. Understanding is reco
 | RSI | LEARNING | Descriptive meaning understood; ratio and seeding arithmetic need reinforcement |
 | relative volume | UNDERSTOOD | Calculated ratio 2 and identified prior-only baseline |
 | sample standard deviation arithmetic | NEEDS REVIEW | Squaring reason understood after guided examples |
+| target alignment | LEARNING | Corrected next-session mapping; implementation walkthrough next |
+| label availability | UNDERSTOOD | Explained training must wait for Wednesday close |
+| unknown versus nonpositive outcome | NEEDS REVIEW | Corrected final label from 0 to undefined after explanation |

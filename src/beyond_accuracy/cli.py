@@ -21,6 +21,9 @@ def main() -> None:
     features.add_argument("--snapshot", type=Path, required=True)
     features.add_argument("--config", type=Path, required=True)
     features.add_argument("--output", type=Path, default=Path("results/features"))
+    targets = commands.add_parser("build-targets", help="Build separate next-session labels from a verified snapshot")
+    targets.add_argument("--snapshot", type=Path, required=True)
+    targets.add_argument("--output", type=Path, default=Path("results/targets"))
     args = parser.parse_args()
     try:
         if args.command == "check-config":
@@ -35,6 +38,9 @@ def main() -> None:
             from beyond_accuracy.feature_artifacts import prepare_features
             config = load_feature_config(args.config)
             result = {"features": str(prepare_features(args.snapshot, config, args.output))}
+        elif args.command == "build-targets":
+            from beyond_accuracy.target_artifacts import prepare_targets
+            result = {"targets": str(prepare_targets(args.snapshot, args.output))}
         else:
             from beyond_accuracy.snapshots import verify_snapshot
             metadata = verify_snapshot(args.snapshot)
