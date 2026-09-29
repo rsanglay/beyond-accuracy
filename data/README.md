@@ -1,3 +1,3 @@
-# Data
+# Local market data
 
-No market data has been downloaded. Later phases will record source, retrieval time, adjustment conventions, and content hashes. Raw downloads are ignored by Git; redistribution permissions must be checked before publishing data.
+Run the download-data CLI to create a distinct snapshot under `data/snapshots/`. Each includes provider prices, adjusted returns, and metadata with checksums. Run verify-data to validate offline. Snapshots are excluded from Git; preserve them locally to reproduce results. See [data conventions](../docs/market_data.md).

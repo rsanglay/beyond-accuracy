@@ -8,7 +8,12 @@ version = "0.1.0"
 description = "Machine learning trading research under realistic market frictions"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "numpy==2.5.3",
+    "pandas==3.0.6",
+    "yfinance==1.7.0",
+    "pandas-market-calendars==5.4.0",
+]
 
 [project.scripts]
 beyond-accuracy = "beyond_accuracy.cli:main"
