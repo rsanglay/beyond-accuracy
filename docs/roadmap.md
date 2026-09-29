@@ -3,7 +3,7 @@
 Complete each conceptual checkpoint before implementing its phase. Workflow: explain, ask, wait, review, build, show, test, interpret. Record learner answers without inventing understanding.
 
 1. Software architecture — checkpoint passed; foundation implemented.
-2. Market data — next checkpoint; OHLCV, adjustments, simple and log returns.
+2. Market data — introductory checkpoint passed; pipeline implemented on a review branch. Percentage arithmetic remains a practice topic.
 3. Feature engineering — lagged returns, momentum, moving averages, volatility, RSI, volume, rolling windows, information availability.
 4. Targets — shifted outcomes and leakage checks.
 5. Benchmarks — buy and hold, majority classifier, momentum, naive predictions.
@@ -23,9 +23,9 @@ Complete each conceptual checkpoint before implementing its phase. Workflow: exp
 19. Interview practice — one question at a time; reasoning over scripts.
 
 ## Decisions still open
-Data source and date range; adjustment conventions; exact prediction target and execution horizon; holding/cash assumptions; validation boundaries; parameter-search budget; final untouched evaluation period; inference design. Resolve at the relevant teaching checkpoint before implementation.
+Exact prediction target and execution horizon; holding/cash assumptions; validation boundaries; parameter-search budget; final untouched evaluation period; inference design. Resolve at the relevant teaching checkpoint before implementation.
 
 ## Reproducibility plan
-Each research run will eventually capture the code commit and dirty state, configuration, data hashes, dependencies, Python/platform versions, seeds, and generated outputs. Phase 1 only validates configuration; no experiment runner exists yet.
+Each research run will eventually capture the code commit and dirty state, configuration, data hashes, dependencies, Python/platform versions, seeds, and generated outputs. Phase 2 records data snapshot metadata; no model experiment runner exists yet.
 
 The earlier external build specification was not available in this conversation. This roadmap records the supplied requirements without inventing missing choices.

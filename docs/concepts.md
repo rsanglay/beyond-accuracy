@@ -7,16 +7,16 @@ Statuses: NOT STARTED, LEARNING, UNDERSTOOD, NEEDS REVIEW. Understanding is reco
 | shared implementation and notebook state | UNDERSTOOD | Phase 1 answers and follow-ups |
 | reproducibility | UNDERSTOOD | Phase 1 answers and follow-ups |
 | purpose of automated tests | UNDERSTOOD | Phase 1 answers and follow-ups |
-| configuration-driven experiments | LEARNING | Introduced; practical CLI demonstration next |
-| simple returns | NOT STARTED | Awaiting checkpoint |
-| log returns | NOT STARTED | Awaiting checkpoint |
+| configuration-driven experiments | UNDERSTOOD | Explained missing cost assumptions prevent reproduction |
+| simple returns | NEEDS REVIEW | Reasoning understood; percentage arithmetic improved after guided practice |
+| log returns | LEARNING | Distinguishes labels and zero return; additivity not yet checked |
 | compounding | NOT STARTED | Awaiting checkpoint |
 | volatility | NOT STARTED | Awaiting checkpoint |
 | covariance | NOT STARTED | Awaiting checkpoint |
 | momentum | NOT STARTED | Awaiting checkpoint |
 | rolling windows | NOT STARTED | Awaiting checkpoint |
-| data leakage | NOT STARTED | Awaiting checkpoint |
-| look-ahead bias | NOT STARTED | Awaiting checkpoint |
+| data leakage | LEARNING | Understands future-price example; broader cases pending |
+| look-ahead bias | UNDERSTOOD | Introductory availability examples answered correctly; harder cases pending |
 | feature engineering | NOT STARTED | Awaiting checkpoint |
 | classification | NOT STARTED | Awaiting checkpoint |
 | Logistic Regression | NOT STARTED | Awaiting checkpoint |
@@ -40,3 +40,6 @@ Statuses: NOT STARTED, LEARNING, UNDERSTOOD, NEEDS REVIEW. Understanding is reco
 | overfitting | NOT STARTED | Awaiting checkpoint |
 | robustness | NOT STARTED | Awaiting checkpoint |
 | non-stationarity | NOT STARTED | Awaiting checkpoint |
+| OHLCV | LEARNING | Definitions introduced; individual fields not yet tested |
+| corporate actions and adjusted prices | UNDERSTOOD | Explained false split loss; distinguish adjusted prices from trade prices in later phases |
+| split versus diversification | NEEDS REVIEW | Correctly computed loss after guided correction |
