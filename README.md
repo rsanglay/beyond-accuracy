@@ -47,3 +47,7 @@ docker run --rm beyond-accuracy
 The container is a starting environment, not a claim of bit-for-bit reproducibility; image digests and the research environment will be fixed before experiments.
 
 See [the learning log](docs/learning_log.md), [concept checklist](docs/concepts.md), and [roadmap](docs/roadmap.md).
+
+## Contributing
+
+Changes follow feature branches, pull requests, automated checks, and owner review before merging. See [the development workflow](CONTRIBUTING.md).
