@@ -29,3 +29,7 @@ Exact prediction target and execution horizon; holding/cash assumptions; validat
 Each research run will eventually capture the code commit and dirty state, configuration, data hashes, dependencies, Python/platform versions, seeds, and generated outputs. Phase 2 records data snapshot metadata; no model experiment runner exists yet.
 
 The earlier external build specification was not available in this conversation. This roadmap records the supplied requirements without inventing missing choices.
+
+## Deferred quantum extension
+
+The classical sequence above remains the priority and must remain independently publishable. After completing it and passing the methodology/findings checkpoint, follow the separate [quantum extension roadmap](quantum_extension.md). No quantum implementation or dependencies are introduced before those teaching gates.

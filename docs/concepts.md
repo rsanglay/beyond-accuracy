@@ -50,3 +50,5 @@ Statuses: NOT STARTED, LEARNING, UNDERSTOOD, NEEDS REVIEW. Understanding is reco
 | target alignment | LEARNING | Corrected next-session mapping; implementation walkthrough next |
 | label availability | UNDERSTOOD | Explained training must wait for Wednesday close |
 | unknown versus nonpositive outcome | NEEDS REVIEW | Corrected final label from 0 to undefined after explanation |
+
+Quantum topics are deferred and tracked separately in [the quantum checklist](quantum_concepts.md). They remain NOT STARTED until the classical completion checkpoint.
