@@ -6,8 +6,8 @@ Complete each conceptual checkpoint before implementing its phase. Workflow: exp
 2. Market data — implemented and merged (PR #2); output checkpoint passed. Percentage arithmetic remains a practice topic.
 3. Feature engineering — implemented and merged (PR #3); output checkpoint passed; volatility and RSI arithmetic remain practice topics.
 4. Targets — implemented and merged (PR #4); output checkpoint passed.
-5. Benchmarks — introductory checkpoint passed; prediction rules implemented on a review branch. Output check next. Buy-and-hold financial implementation deferred to execution/backtesting.
-6. Expanding-window walk-forward validation — chronology and label availability.
+5. Benchmarks — prediction rules and output check completed; PR #5 merged. Buy-and-hold financial implementation deferred to execution/backtesting.
+6. Expanding-window walk-forward validation — introductory checkpoint passed; annual development folds implemented on a review branch. Output review next; train-only model preprocessing comes with Logistic Regression.
 7. Models — separate checkpoints for Logistic Regression, Random Forest, XGBoost, LightGBM.
 8. ML metrics — accuracy, precision, recall, F1, ROC-AUC, log loss, Brier score.
 9. Signals and execution — predictions, signals, positions, trades, feasible timing.
@@ -23,7 +23,7 @@ Complete each conceptual checkpoint before implementing its phase. Workflow: exp
 19. Interview practice — one question at a time; reasoning over scripts.
 
 ## Decisions still open
-Execution horizon and its relation to the fixed next-session close-to-close prediction target; holding/cash assumptions; validation boundaries; parameter-search budget; final untouched evaluation period; inference design. Resolve at the relevant teaching checkpoint before implementation.
+Execution horizon and its relation to the fixed next-session close-to-close prediction target; holding/cash assumptions; parameter-search budget; protocol for the reserved 2024–2025 final evaluation; inference design. Resolve at the relevant teaching checkpoint before implementation.
 
 ## Reproducibility plan
 Each research run will eventually capture the code commit and dirty state, configuration, data hashes, dependencies, Python/platform versions, seeds, and generated outputs. Phase 2 records data snapshot metadata; no model experiment runner exists yet.

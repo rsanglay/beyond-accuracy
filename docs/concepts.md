@@ -25,8 +25,8 @@ Statuses: NOT STARTED, LEARNING, UNDERSTOOD, NEEDS REVIEW. Understanding is reco
 | XGBoost | NOT STARTED | Awaiting checkpoint |
 | LightGBM | NOT STARTED | Awaiting checkpoint |
 | probability calibration | NOT STARTED | Awaiting checkpoint |
-| walk-forward validation | NOT STARTED | Awaiting checkpoint |
-| out-of-sample testing | NOT STARTED | Awaiting checkpoint |
+| walk-forward validation | LEARNING | Introductory checkpoint passed after chronology corrections; output review next |
+| out-of-sample testing | LEARNING | Explained why future outcomes cannot train earlier predictions |
 | transaction costs | NOT STARTED | Awaiting checkpoint |
 | turnover | NOT STARTED | Awaiting checkpoint |
 | basis points | NOT STARTED | Awaiting checkpoint |
@@ -57,3 +57,5 @@ Statuses: NOT STARTED, LEARNING, UNDERSTOOD, NEEDS REVIEW. Understanding is reco
 | percentage points | LEARNING | 55% versus 56% distinction introduced |
 
 Quantum topics are deferred and tracked separately in [the quantum checklist](quantum_concepts.md). They remain NOT STARTED until the classical completion checkpoint.
+| expanding versus rolling windows | UNDERSTOOD | Corrected initial confusion; retained 2010 start when expanding |
+| training-only preprocessing | LEARNING | Correctly identified future-inclusive mean leakage; implementation deferred to models |

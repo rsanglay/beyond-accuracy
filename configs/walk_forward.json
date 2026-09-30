@@ -1,0 +1,8 @@
+{
+  "training_start": "2010-01-01",
+  "first_test_year": 2019,
+  "last_test_year": 2023,
+  "reserved_start": "2024-01-01",
+  "minimum_training_rows": 1000,
+  "momentum_window": 5
+}
