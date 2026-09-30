@@ -1,0 +1,7 @@
+{
+  "C": 1.0,
+  "max_iter": 2000,
+  "tolerance": 0.000001,
+  "threshold": 0.5,
+  "random_seed": 42
+}

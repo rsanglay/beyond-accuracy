@@ -306,3 +306,60 @@ Why must a model predicting 2020 avoid outcomes beyond its prediction date?
 
 ### My answer
 The learner's quotation above correctly explains look-ahead bias. They also correctly selected 2010–2019 training for the 2020 test year and waiting for January to finish before using a December row's January outcome.
+
+## Phase 6 output check — Year-boundary labels
+
+### Concept learned
+Admission to training depends on when the label becomes known, not just its feature date.
+
+### Explanation in my own words
+> 28 december
+
+This correctly identified which row's outcome was known after 31 December's close.
+
+### Important formula
+outcome_session <= fit_after_session, under the after-close data-availability contract.
+
+### Common mistake
+Initially explained eligibility by restating that a row was admitted. Clarified the reason: the 28 December row uses 31 December close, while the 31 December row needs January's next close.
+
+### How we used it
+Reviewed the real first-fold boundary before approving and merging PR #7.
+
+### Interview question
+Why can the 28 December row train the model after 31 December close, while the 31 December row cannot?
+
+### My answer
+The learner selected 28 December after tracing the two outcome dates. Continue practising independent explanations.
+
+## Phase 7a — Logistic Regression
+
+### Concept learned
+Binary classification, probability versus return, threshold, coefficients, sigmoid, standardisation, regularisation, overfitting, and training-only fitting. Introductory checkpoint passed; implementation/output walkthrough next.
+
+### Explanation in my own words
+On a positive coefficient:
+> association learned from training data
+
+On the proper history for fitting both scaler and model for 2019:
+> 2010–2018
+
+### Important formula
+z = intercept + sum(weight * feature); p = 1/(1+exp(-z)).
+Standardised feature = (value - training mean) / training standard deviation.
+RSI 50 with training mean 50 and scale 10 becomes 0; RSI 40 becomes -1.
+Class 1 when p >= 0.5, otherwise class 0. p=0.58 means estimated 58% probability, not expected gain.
+
+### Common mistake
+Initially answered 60 for scaling RSI 50, then -10 for scaling RSI 40; worked through subtraction and division to 0 and -1. Initially proposed recalculating using 2019 test data; corrected on realising the full test-year average contains future information. Classified 0.43 as negative; clarified class 0 also includes zero. Training accuracy alone does not establish generalisation; the learner identified later unseen data as stronger evidence after a memorisation analogy.
+
+### How we used it
+Fresh StandardScaler plus L2 Logistic Regression per annual fold, frozen test-year preprocessing, fixed initial settings, positive-class probabilities, and per-fold coefficient/scaler audit. No test-year tuning, model-performance metrics, or trading conclusions. Scaling uses ddof=0; volatility continues to use ddof=1. The code rejects nonconvergence rather than silently reporting predictions.
+
+### Interview question
+What data should fit both scaling settings and model coefficients when predicting 2019?
+
+### My answer
+> 2010–2018
+
+The learner correctly identified probability meaning and the 0.50 threshold classification. Scaling arithmetic, regularisation, and generalisation reasoning need reinforcement; introductory understanding is not mastery.

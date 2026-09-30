@@ -29,6 +29,7 @@ def main() -> None:
     walk.add_argument("--snapshot", type=Path, required=True)
     walk.add_argument("--features-config", type=Path, required=True)
     walk.add_argument("--config", type=Path, required=True)
+    walk.add_argument("--logistic-config", type=Path, help="Optionally add fold-fitted Logistic Regression")
     walk.add_argument("--output", type=Path, default=Path("results/walk_forward"))
     args = parser.parse_args()
     try:
@@ -54,8 +55,10 @@ def main() -> None:
             from beyond_accuracy.features import load_feature_config
             from beyond_accuracy.walk_forward import load_walk_forward_config
             from beyond_accuracy.walk_forward_run import run_walk_forward
+            from beyond_accuracy.logistic import load_logistic_config
             result = {"run": str(run_walk_forward(args.snapshot, load_feature_config(args.features_config),
-                                                 load_walk_forward_config(args.config), args.output))}
+                                                 load_walk_forward_config(args.config), args.output,
+                                                 load_logistic_config(args.logistic_config) if args.logistic_config else None))}
         else:
             from beyond_accuracy.snapshots import verify_snapshot
             metadata = verify_snapshot(args.snapshot)

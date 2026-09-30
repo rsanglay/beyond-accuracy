@@ -4,7 +4,7 @@
 
 An incremental quantitative research and learning project investigating whether better market-direction predictions translate into better trading outcomes after costs.
 
-**Status: Phase 6 expanding-window development predictions. No trained models, backtests, or strategy performance findings yet.**
+**Status: Phase 7a Logistic Regression. Logistic Regression development predictions are available; no backtests or strategy performance findings yet.**
 
 ## Planned research
 SPY; Logistic Regression, Random Forest, XGBoost, and LightGBM; simple benchmarks; expanding-window walk-forward evaluation; realistic execution timing; 0/5/10/25 bps transaction costs; predictive and financial metrics; yearly stability, regime analysis, statistical uncertainty, and robustness checks. All choices and claims will be documented as the project progresses.
@@ -70,7 +70,7 @@ The first return is missing because the snapshot has no preceding price. No miss
 beyond-accuracy build-features --snapshot data/snapshots/<snapshot-id> --config configs/features.json
 ```
 
-This verifies the existing snapshot and calculates trailing returns, momentum, moving-average diagnostics, sample volatility, Wilder RSI, and relative volume. No network request is needed. Early undefined values are preserved, and each output directory records settings and provenance. See [feature definitions and timing](docs/features.md). Targets are prepared separately; no models are implemented yet.
+This verifies the existing snapshot and calculates trailing returns, momentum, moving-average diagnostics, sample volatility, Wilder RSI, and relative volume. No network request is needed. Early undefined values are preserved, and each output directory records settings and provenance. See [feature definitions and timing](docs/features.md). Targets are prepared separately from model features.
 
 ## Build next-session targets
 
@@ -86,7 +86,7 @@ Creates separate historical outcomes and records the session after which each be
 beyond-accuracy benchmark-demo
 ```
 
-Shows synthetic predictions from a frozen training-majority classifier, the latest observed return's direction, and trailing momentum. It does not evaluate SPY or run a strategy. See [benchmark rules and timing](docs/benchmarks.md). Chronological evaluation and buy-and-hold financial calculations remain later phases.
+Shows synthetic predictions from a frozen training-majority classifier, the latest observed return's direction, and trailing momentum. It does not evaluate SPY or run a strategy. See [benchmark rules and timing](docs/benchmarks.md). Chronological prediction generation is implemented; buy-and-hold financial calculations remain a later phase.
 
 ## Generate chronological benchmark predictions
 
@@ -94,4 +94,8 @@ Shows synthetic predictions from a frozen training-majority classifier, the late
 beyond-accuracy walk-forward --snapshot data/snapshots/<snapshot-id> --features-config configs/features.json --config configs/walk_forward.json
 ```
 
-Uses annual expanding training windows for 2019–2023 development predictions, with 2024–2025 reserved. All benchmarks share eligible test dates; training labels must already be available. No ML models, preprocessing fit, performance report, or trading returns are produced yet. See [validation timing and limitations](docs/walk_forward.md).
+Uses annual expanding training windows for 2019–2023 development predictions, with 2024–2025 reserved. All benchmarks share eligible test dates; training labels must already be available. This command produces benchmark predictions; add the optional Logistic Regression configuration below to fit the first ML model. No performance report or trading returns are produced. See [validation timing and limitations](docs/walk_forward.md).
+
+## Add Logistic Regression
+
+Append `--logistic-config configs/logistic.json` to the walk-forward command. Each annual fold fits a fresh training-only scaler and regularised model, then saves positive-class probabilities and classes on the shared test dates. See [model meaning, settings, and audit records](docs/logistic_regression.md). Install the updated `requirements.lock` before running.

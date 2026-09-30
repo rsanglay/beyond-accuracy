@@ -33,7 +33,7 @@ Creates a unique local run with `predictions.csv`, separate `outcomes.csv`, `fol
 
 ## Preprocessing and model boundary
 
-The three benchmarks do not need learned preprocessing, so none is fitted here. When Logistic Regression is added, its learned preprocessing must be instantiated and fitted inside each fold on training features only, then used unchanged on that fold's test features. This phase does not implement or claim to validate a scaler or model-selection pipeline. Hyperparameter tuning must use an inner chronological development procedure rather than these test outcomes.
+The three benchmarks do not need learned preprocessing. The optional Logistic Regression pipeline now fits its scaler and coefficients inside each training fold only, then uses them unchanged on that fold's test features. See [Logistic Regression](logistic_regression.md) for checks and settings. No hyperparameter-selection pipeline is implemented. Hyperparameter tuning must use an inner chronological development procedure rather than these test outcomes.
 
 Development years may inform later research choices; repeatedly inspecting them does not preserve a final untouched test. Keep reserved years separate until the final methodology is frozen. The reserved cutoff is configurable but should not be moved in response to results. In later folds it is legitimate to train on outcomes from previous test years once they are historical; it is not legitimate to revise predictions already made.
 

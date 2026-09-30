@@ -12,13 +12,15 @@ import pandas as pd
 
 from beyond_accuracy.benchmarks import MajorityBenchmark, predict_momentum, predict_previous_direction
 from beyond_accuracy.features import FeatureConfig, build_features
+from beyond_accuracy.logistic import LogisticConfig, fit_predict_logistic
 from beyond_accuracy.snapshots import git_state, sha256, verify_snapshot
 from beyond_accuracy.targets import build_targets
 from beyond_accuracy.walk_forward import WalkForwardConfig, expanding_folds
 
 
 def run_walk_forward(snapshot: Path, feature_config: FeatureConfig,
-                     config: WalkForwardConfig, output: Path) -> Path:
+                     config: WalkForwardConfig, output: Path,
+                     logistic_config: LogisticConfig | None = None) -> Path:
     source = verify_snapshot(snapshot)
     if config.momentum_window not in feature_config.momentum_windows:
         raise ValueError('Benchmark momentum window must exist in feature configuration')
@@ -43,6 +45,12 @@ def run_walk_forward(snapshot: Path, feature_config: FeatureConfig,
         })
         if predicted.isna().any().any():
             raise ValueError('A benchmark did not predict all common test dates')
+        logistic_audit = None
+        if logistic_config is not None:
+            logistic_predictions, logistic_audit = fit_predict_logistic(
+                features.loc[fold.training_sessions], training, test_features,
+                fit_after_session=fold.fit_after_session, config=logistic_config)
+            predicted = predicted.join(logistic_predictions)
         predicted['test_year'] = fold.test_year
         predictions.append(predicted)
         manifest.append({
@@ -52,6 +60,7 @@ def run_walk_forward(snapshot: Path, feature_config: FeatureConfig,
             'training_rows': len(fold.training_sessions), 'prediction_rows': len(fold.test_sessions),
             'unavailable_training_labels': fold.unavailable_training_labels,
             'majority_class': model.predicted_class,
+            'logistic': logistic_audit,
             'training_sessions': fold.training_sessions.strftime('%Y-%m-%d').tolist(),
             'test_sessions': fold.test_sessions.strftime('%Y-%m-%d').tolist(),
         })
@@ -70,10 +79,11 @@ def run_walk_forward(snapshot: Path, feature_config: FeatureConfig,
             'schema_version': 1, 'created_at_utc': created.isoformat(),
             'config': asdict(config), 'feature_config': asdict(feature_config),
             'candidate_columns': features.columns.tolist(),
+            'logistic_config': asdict(logistic_config) if logistic_config is not None else None,
             'source_snapshot_id': snapshot.name, 'source_metadata_sha256': sha256(snapshot / 'metadata.json'),
             'source_file_sha256': source['sha256'],
             'prediction_rows': len(combined), 'scorable_rows': int(outcomes.eligible_for_scoring.sum()),
-            'preprocessing': 'None fitted for these benchmarks. Future model preprocessing must be fitted inside each training fold only.',
+            'preprocessing': 'Benchmarks unscaled; optional Logistic Regression uses a fresh StandardScaler fitted on each training fold only.',
             'timing': 'Fit once after the final session before each test year; predict after each test session closes. Not an execution model.',
             'limitations': 'Development predictions only; no accuracy/financial metrics or tuning. Reserved period excluded before feature/target construction. Snapshot validation reads full history for integrity, not model fitting.',
             'git': git_state(), 'python': platform.python_version(), 'platform': platform.platform(),

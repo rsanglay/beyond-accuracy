@@ -17,15 +17,15 @@ Statuses: NOT STARTED, LEARNING, UNDERSTOOD, NEEDS REVIEW. Understanding is reco
 | rolling windows | UNDERSTOOD | Identified rolling sessions and prior-volume baseline after warm-up clarification |
 | data leakage | LEARNING | Future-inclusive mean and imputation examples understood after hints |
 | look-ahead bias | UNDERSTOOD | Introductory availability examples answered correctly; harder cases pending |
-| feature engineering | LEARNING | Introductory checkpoint passed; implementation/output walkthrough next |
-| classification | NOT STARTED | Awaiting checkpoint |
-| Logistic Regression | NOT STARTED | Awaiting checkpoint |
+| feature engineering | UNDERSTOOD | Output checkpoint completed; arithmetic topics tracked separately |
+| classification | UNDERSTOOD | Correctly interpreted probability and threshold; class 0 includes zero returns |
+| Logistic Regression | LEARNING | Introductory checkpoint passed; model output walkthrough next |
 | Random Forest | NOT STARTED | Awaiting checkpoint |
 | boosting | NOT STARTED | Awaiting checkpoint |
 | XGBoost | NOT STARTED | Awaiting checkpoint |
 | LightGBM | NOT STARTED | Awaiting checkpoint |
 | probability calibration | NOT STARTED | Awaiting checkpoint |
-| walk-forward validation | LEARNING | Introductory checkpoint passed after chronology corrections; output review next |
+| walk-forward validation | UNDERSTOOD | Introductory and output checkpoints passed with guided boundary explanation |
 | out-of-sample testing | LEARNING | Explained why future outcomes cannot train earlier predictions |
 | transaction costs | NOT STARTED | Awaiting checkpoint |
 | turnover | NOT STARTED | Awaiting checkpoint |
@@ -37,7 +37,7 @@ Statuses: NOT STARTED, LEARNING, UNDERSTOOD, NEEDS REVIEW. Understanding is reco
 | statistical significance | NOT STARTED | Awaiting checkpoint |
 | economic significance | NOT STARTED | Awaiting checkpoint |
 | bootstrap | NOT STARTED | Awaiting checkpoint |
-| overfitting | NOT STARTED | Awaiting checkpoint |
+| overfitting | LEARNING | Identified unseen data as stronger evidence after memorisation example |
 | robustness | NOT STARTED | Awaiting checkpoint |
 | non-stationarity | NOT STARTED | Awaiting checkpoint |
 | OHLCV | LEARNING | Definitions introduced; individual fields not yet tested |
@@ -47,15 +47,20 @@ Statuses: NOT STARTED, LEARNING, UNDERSTOOD, NEEDS REVIEW. Understanding is reco
 | RSI | LEARNING | Descriptive meaning understood; ratio and seeding arithmetic need reinforcement |
 | relative volume | UNDERSTOOD | Calculated ratio 2 and identified prior-only baseline |
 | sample standard deviation arithmetic | NEEDS REVIEW | Squaring reason understood after guided examples |
-| target alignment | LEARNING | Corrected next-session mapping; implementation walkthrough next |
+| target alignment | UNDERSTOOD | Next-session and availability output checks completed |
 | label availability | UNDERSTOOD | Explained training must wait for Wednesday close |
 | unknown versus nonpositive outcome | NEEDS REVIEW | Corrected final label from 0 to undefined after explanation |
-| prediction benchmarks | LEARNING | Introductory checkpoint passed; implementation output check next |
+| prediction benchmarks | UNDERSTOOD | Explained differing horizons through worked output example |
 | majority classifier | UNDERSTOOD | Correctly retained training-majority prediction with 40% positive test outcomes |
 | buy and hold | NEEDS REVIEW | Corrected loss-triggered selling misconception; financial implementation deferred |
 | prediction versus scoring | NEEDS REVIEW | Future price needed to score, not to make the prediction; corrected with hints |
 | percentage points | LEARNING | 55% versus 56% distinction introduced |
 
-Quantum topics are deferred and tracked separately in [the quantum checklist](quantum_concepts.md). They remain NOT STARTED until the classical completion checkpoint.
 | expanding versus rolling windows | UNDERSTOOD | Corrected initial confusion; retained 2010 start when expanding |
-| training-only preprocessing | LEARNING | Correctly identified future-inclusive mean leakage; implementation deferred to models |
+| training-only preprocessing | NEEDS REVIEW | Correct final training period; test-year recalculation misconception corrected |
+| standardisation arithmetic | NEEDS REVIEW | Worked through mean subtraction and division with hints |
+| coefficients versus causation | UNDERSTOOD | Identified association learned from training data |
+| regularisation | LEARNING | Penalty idea introduced; independent explanation pending |
+| sigmoid | LEARNING | Probability mapping introduced; deeper reasoning pending |
+
+Quantum topics are deferred and tracked separately in [the quantum checklist](quantum_concepts.md). They remain NOT STARTED until the classical completion checkpoint.
