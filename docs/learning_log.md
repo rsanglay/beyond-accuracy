@@ -258,3 +258,51 @@ If training is 60% positive but test outcomes are 40% positive, what does the al
 > 40%
 
 The learner also correctly predicted positive momentum despite a negative latest session and acknowledged that loss-triggered selling violates buy and hold. Independent explanations will be revisited.
+
+## Phase 5 output check — Different benchmark horizons
+
+### Concept learned
+The latest session and multi-session momentum can imply different predictions without an implementation error.
+
+### Explanation in my own words
+> nonpositive
+
+This correctly answered the latest-direction rule for a fall from $106 to $105 after the learner correctly identified positive five-session momentum from $100 to $105.
+
+### Important formula
+Single-session direction uses the latest return; multi-session momentum uses the whole window return, not a majority vote over daily directions.
+
+### Common mistake
+Initially described momentum as a majority. Clarified that it measures total price change across the window.
+
+### How we used it
+Inspected benchmark disagreement, then approved and merged PR #5.
+
+### Interview question
+Can a negative last session coexist with positive five-session momentum?
+
+### My answer
+The learner identified positive momentum and nonpositive latest-direction predictions after a guided example.
+
+## Phase 6 — Walk-forward validation
+
+### Concept learned
+Expanding versus rolling windows, chronological out-of-sample evaluation, label availability, and training-only preprocessing. Introductory checkpoint passed; implementation walkthrough next.
+
+### Explanation in my own words
+> so we dont get look ahead bias and leakage as it could be beyond the models prediciton date
+
+### Important formula
+Training starts at a fixed date and expands; labels require outcome_session <= fit_after_session under the after-close availability contract. Test feature dates follow the fitting session.
+
+### Common mistake
+Initially said an expanding window discards earlier years; corrected to retaining 2010 as the start. Initially allowed 2020 outcomes before making 2020 predictions; corrected by considering 31 December 2019. Initially waited until after 2021 to use known 2020 outcomes; clarified that already-known 2020 outcomes can train the 2021 model. A final 2020 row with a January outcome must still wait. Initially answered only 2018 for preprocessing; clarified the entire 2010–2018 training period.
+
+### How we used it
+Built annual development folds with explicit date manifests and label checks. Benchmarks share complete-feature dates. Reserved 2024–2025 is removed before development features/targets. No learned preprocessing is needed for these rules; training-only model preprocessing is deferred to the model phase. No performance metrics or model tuning were introduced.
+
+### Interview question
+Why must a model predicting 2020 avoid outcomes beyond its prediction date?
+
+### My answer
+The learner's quotation above correctly explains look-ahead bias. They also correctly selected 2010–2019 training for the 2020 test year and waiting for January to finish before using a December row's January outcome.

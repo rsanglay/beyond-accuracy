@@ -25,6 +25,11 @@ def main() -> None:
     targets.add_argument("--snapshot", type=Path, required=True)
     targets.add_argument("--output", type=Path, default=Path("results/targets"))
     commands.add_parser("benchmark-demo", help="Show synthetic benchmark predictions (no market evaluation)")
+    walk = commands.add_parser("walk-forward", help="Generate annual development benchmark predictions locally")
+    walk.add_argument("--snapshot", type=Path, required=True)
+    walk.add_argument("--features-config", type=Path, required=True)
+    walk.add_argument("--config", type=Path, required=True)
+    walk.add_argument("--output", type=Path, default=Path("results/walk_forward"))
     args = parser.parse_args()
     try:
         if args.command == "check-config":
@@ -45,6 +50,12 @@ def main() -> None:
         elif args.command == "benchmark-demo":
             from beyond_accuracy.benchmark_demo import benchmark_demo
             result = benchmark_demo()
+        elif args.command == "walk-forward":
+            from beyond_accuracy.features import load_feature_config
+            from beyond_accuracy.walk_forward import load_walk_forward_config
+            from beyond_accuracy.walk_forward_run import run_walk_forward
+            result = {"run": str(run_walk_forward(args.snapshot, load_feature_config(args.features_config),
+                                                 load_walk_forward_config(args.config), args.output))}
         else:
             from beyond_accuracy.snapshots import verify_snapshot
             metadata = verify_snapshot(args.snapshot)
