@@ -205,3 +205,56 @@ Can Tuesday's labelled example train a model on Tuesday evening?
 > wait for wednesday close
 
 Introductory checkpoint passed. Independent code/output explanation remains to be checked.
+
+## Phase 4 output check — Label availability
+
+### Concept learned
+An outcome visible in historical data was not necessarily available at prediction time.
+
+### Explanation in my own words
+> wait for 31
+
+### Important formula
+No new formula; the 30 December row's outcome requires 31 December's closing data.
+
+### Common mistake
+Confusing an unknown outcome at the time with its later-known label in a completed historical table.
+
+### How we used it
+Confirmed label availability before approving and merging PR #4.
+
+### Interview question
+When may the 30 December example be used for training?
+
+### My answer
+The learner's quotation above correctly identifies waiting for 31 December's closing data.
+
+## Phase 5 — Simple benchmarks
+
+### Concept learned
+Majority classification, latest-return direction, momentum, fair comparisons, and buy-and-hold as a separate financial reference. Introductory checkpoint passed; code/output review next.
+
+### Explanation in my own words
+On choosing the majority class and comparing 55% versus 56% accuracy:
+> positive, it hast bevause the accuracy is 1% lower
+
+Tutor clarification: the absolute difference is one percentage point. The learner correctly identified no accuracy improvement.
+
+### Important formula
+Accuracy = correct predictions / total predictions. The learner correctly answered 40% for 40 positive outcomes when every prediction is positive.
+
+### Common mistake
+Initially proposed using test outcomes to choose the majority class. Corrected after considering whether January's majority was knowable before January. Initially thought predicting Wednesday required Wednesday's actual price; clarified that it is needed to score the prediction afterward. Initially thought buy and hold would sell after five losses; clarified that selling in response to losses breaks its fixed holding rule.
+
+### How we used it
+Implemented a frozen training-majority rule with known-outcome checks, two explicit feature-based direction rules, and local known-answer tests. Missing inputs remain missing. Buy-and-hold financial calculations and chronological evaluation are deferred to their checkpoints. No empirical benchmark performance is claimed.
+
+### Interview question
+If training is 60% positive but test outcomes are 40% positive, what does the already-trained majority classifier predict and what accuracy results?
+
+### My answer
+> positive
+
+> 40%
+
+The learner also correctly predicted positive momentum despite a negative latest session and acknowledged that loss-triggered selling violates buy and hold. Independent explanations will be revisited.
