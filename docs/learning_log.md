@@ -363,3 +363,57 @@ What data should fit both scaling settings and model coefficients when predictin
 > 2010–2018
 
 The learner correctly identified probability meaning and the 0.50 threshold classification. Scaling arithmetic, regularisation, and generalisation reasoning need reinforcement; introductory understanding is not mastery.
+
+## Phase 7a output check — Probability and fixed annual fitting
+
+### Concept learned
+Probability is distinct from return size, and the annual model remains fixed through its test year.
+
+### Explanation in my own words
+> chance of positive
+
+> before 2019
+
+### Important formula
+Class 1 when estimated P(up) >= 0.5.
+
+### Common mistake
+Initially suggested recalculating during 2019 using that year's outcomes. Corrected after identifying future information as look-ahead bias; selected the model fitted before 2019 for July predictions. The documented schedule is annual; alternative past-only refitting schedules could be researched later.
+
+### How we used it
+Reviewed a real probability prediction, then approved and merged PR #8.
+
+### Interview question
+Which model and scaler are used for a prediction in July 2019?
+
+### My answer
+> before 2019
+
+## Phase 7b — Random Forest
+
+### Concept learned
+Decision trees, conditional feature interactions, ensembles, bootstrap sampling, random feature subsets, and tree-complexity limits. Introductory checkpoint passed; implementation/output check next.
+
+### Explanation in my own words
+On averaging identical trees:
+> no because they are the same prediciton so average stays the same
+
+On preventing future observations entering bootstrap samples:
+> no because we using 2010-2018 to predict 2019
+
+### Important formula
+Forest probability is the mean of its trees' class-probability estimates. This is not a trading-return calculation.
+
+### Common mistake
+Assuming more trees guarantee better predictions, or that random bootstrap sampling permits future test observations. Neither is true. A one-observation leaf is weak evidence even if it fits perfectly. Leaf/depth limits reduce complexity but do not prove generalisation.
+
+### How we used it
+Fixed 200 trees, depth 5, minimum 20 leaf samples, random feature subsets, seed 42, and no scaling. Each forest uses only its annual training slice. Shared model-input guards prevent divergent leakage checks between Logistic Regression and Random Forest. No tuning or reported test performance.
+
+### Interview question
+Why can a tree represent a momentum relationship that changes with volatility?
+
+### My answer
+> because it measures volatility high and low and makes a decision based on that
+
+Tutor clarification: a tree can branch on volatility and use different momentum rules in the resulting groups. This is an interaction that the current additive Logistic Regression inputs do not explicitly include. Learner also identified overfitting from poor unseen performance and said a single-observation leaf is insufficient because it is only one observation.

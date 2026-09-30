@@ -1,0 +1,8 @@
+{
+  "n_estimators": 200,
+  "max_depth": 5,
+  "min_samples_leaf": 20,
+  "max_features": "sqrt",
+  "threshold": 0.5,
+  "random_seed": 42
+}

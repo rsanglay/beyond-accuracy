@@ -19,8 +19,8 @@ Statuses: NOT STARTED, LEARNING, UNDERSTOOD, NEEDS REVIEW. Understanding is reco
 | look-ahead bias | UNDERSTOOD | Introductory availability examples answered correctly; harder cases pending |
 | feature engineering | UNDERSTOOD | Output checkpoint completed; arithmetic topics tracked separately |
 | classification | UNDERSTOOD | Correctly interpreted probability and threshold; class 0 includes zero returns |
-| Logistic Regression | LEARNING | Introductory checkpoint passed; model output walkthrough next |
-| Random Forest | NOT STARTED | Awaiting checkpoint |
+| Logistic Regression | LEARNING | Output check passed; annual fitting misconception corrected again |
+| Random Forest | LEARNING | Introductory checkpoint passed; forest output check next |
 | boosting | NOT STARTED | Awaiting checkpoint |
 | XGBoost | NOT STARTED | Awaiting checkpoint |
 | LightGBM | NOT STARTED | Awaiting checkpoint |
@@ -62,5 +62,8 @@ Statuses: NOT STARTED, LEARNING, UNDERSTOOD, NEEDS REVIEW. Understanding is reco
 | coefficients versus causation | UNDERSTOOD | Identified association learned from training data |
 | regularisation | LEARNING | Penalty idea introduced; independent explanation pending |
 | sigmoid | LEARNING | Probability mapping introduced; deeper reasoning pending |
+| decision trees and interactions | UNDERSTOOD | Explained branching on volatility to condition a prediction |
+| ensembles and bagging | LEARNING | Identical predictions and training-only bootstrap checks passed |
+| tree complexity limits | UNDERSTOOD | Identified one-observation leaf as insufficient evidence |
 
 Quantum topics are deferred and tracked separately in [the quantum checklist](quantum_concepts.md). They remain NOT STARTED until the classical completion checkpoint.
