@@ -8,7 +8,7 @@ Complete each conceptual checkpoint before implementing its phase. Workflow: exp
 4. Targets — implemented and merged (PR #4); output checkpoint passed.
 5. Benchmarks — prediction rules and output check completed; PR #5 merged. Buy-and-hold financial implementation deferred to execution/backtesting.
 6. Expanding-window walk-forward validation — implemented and merged (PR #7); introductory/output checkpoints passed.
-7. Models — Logistic Regression introductory checkpoint passed and implemented on a review branch; output check next. Random Forest, XGBoost, and LightGBM remain separate future lessons.
+7. Models — Logistic Regression merged (PR #8), output checkpoint passed. Random Forest introductory checkpoint passed and implementation on a review branch; output check next. XGBoost and LightGBM remain future lessons.
 8. ML metrics — accuracy, precision, recall, F1, ROC-AUC, log loss, Brier score.
 9. Signals and execution — predictions, signals, positions, trades, feasible timing.
 10. Backtesting — positions, compounding, turnover, costs; inactive-portfolio invariant.

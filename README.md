@@ -4,7 +4,7 @@
 
 An incremental quantitative research and learning project investigating whether better market-direction predictions translate into better trading outcomes after costs.
 
-**Status: Phase 7a Logistic Regression. Logistic Regression development predictions are available; no backtests or strategy performance findings yet.**
+**Status: Phase 7b Random Forest. Logistic Regression and Random Forest development predictions are available; no backtests or strategy performance findings yet.**
 
 ## Planned research
 SPY; Logistic Regression, Random Forest, XGBoost, and LightGBM; simple benchmarks; expanding-window walk-forward evaluation; realistic execution timing; 0/5/10/25 bps transaction costs; predictive and financial metrics; yearly stability, regime analysis, statistical uncertainty, and robustness checks. All choices and claims will be documented as the project progresses.
@@ -99,3 +99,7 @@ Uses annual expanding training windows for 2019–2023 development predictions, 
 ## Add Logistic Regression
 
 Append `--logistic-config configs/logistic.json` to the walk-forward command. Each annual fold fits a fresh training-only scaler and regularised model, then saves positive-class probabilities and classes on the shared test dates. See [model meaning, settings, and audit records](docs/logistic_regression.md). Install the updated `requirements.lock` before running.
+
+## Add Random Forest
+
+Append `--forest-config configs/random_forest.json` to the walk-forward command, optionally alongside Logistic Regression. Each fold fits an unscaled forest on the same eligible training rows and saves probabilities/classes on the same test dates. See [forest rules, complexity limits, and timing](docs/random_forest.md). No model-performance comparison has been reported yet.
