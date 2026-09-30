@@ -55,3 +55,5 @@ Statuses: NOT STARTED, LEARNING, UNDERSTOOD, NEEDS REVIEW. Understanding is reco
 | buy and hold | NEEDS REVIEW | Corrected loss-triggered selling misconception; financial implementation deferred |
 | prediction versus scoring | NEEDS REVIEW | Future price needed to score, not to make the prediction; corrected with hints |
 | percentage points | LEARNING | 55% versus 56% distinction introduced |
+
+Quantum topics are deferred and tracked separately in [the quantum checklist](quantum_concepts.md). They remain NOT STARTED until the classical completion checkpoint.
