@@ -4,7 +4,7 @@
 
 An incremental quantitative research and learning project investigating whether better market-direction predictions translate into better trading outcomes after costs.
 
-**Status: Phase 4 target-alignment pipeline. No trained models, backtests, or strategy performance findings yet.**
+**Status: Phase 5 prediction benchmarks. No trained models, backtests, or strategy performance findings yet.**
 
 ## Planned research
 SPY; Logistic Regression, Random Forest, XGBoost, and LightGBM; simple benchmarks; expanding-window walk-forward evaluation; realistic execution timing; 0/5/10/25 bps transaction costs; predictive and financial metrics; yearly stability, regime analysis, statistical uncertainty, and robustness checks. All choices and claims will be documented as the project progresses.
@@ -79,3 +79,11 @@ beyond-accuracy build-targets --snapshot data/snapshots/<snapshot-id>
 ```
 
 Creates separate historical outcomes and records the session after which each becomes known. Positive next-session adjusted returns are class 1; zero/negative returns are class 0; the final unknown stays missing. See [target alignment and timing](docs/targets.md). These labels are not trading returns.
+
+## Inspect the benchmark rules
+
+```bash
+beyond-accuracy benchmark-demo
+```
+
+Shows synthetic predictions from a frozen training-majority classifier, the latest observed return's direction, and trailing momentum. It does not evaluate SPY or run a strategy. See [benchmark rules and timing](docs/benchmarks.md). Chronological evaluation and buy-and-hold financial calculations remain later phases.
