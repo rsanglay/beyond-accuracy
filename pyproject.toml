@@ -9,6 +9,7 @@ description = "Machine learning trading research under realistic market friction
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "scikit-learn==1.2.2",
     "numpy==2.5.3",
     "pandas==3.0.6",
     "yfinance==1.7.0",

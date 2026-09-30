@@ -10,6 +10,7 @@ import pandas as pd
 import pandas_market_calendars as calendars
 
 from beyond_accuracy.features import FeatureConfig, build_features
+from beyond_accuracy.logistic import LogisticConfig
 from beyond_accuracy.market_data import DataConfig
 from beyond_accuracy.snapshots import save_snapshot
 from beyond_accuracy.targets import build_targets
@@ -107,11 +108,15 @@ class WalkForwardTests(unittest.TestCase):
                 changed = bars.copy()
                 changed.loc[changed.index >= config.reserved_start, ['Open','High','Low','Close','Adj Close']] *= multiplier
                 snapshot = save_snapshot(changed, DataConfig('SPY', '2018-01-01', '2022-01-01'), root/'data')
-                run = run_walk_forward(snapshot, feature_config, config, root/'runs')
+                run = run_walk_forward(snapshot, feature_config, config, root/'runs',
+                                       LogisticConfig(1., 2000, 1e-6, .5, 42))
                 predictions = pd.read_csv(run/'predictions.csv', index_col='Date', parse_dates=True)
                 outcomes = pd.read_csv(run/'outcomes.csv', index_col='Date', parse_dates=True)
                 self.assertTrue((predictions.index < config.reserved_start).all())
                 self.assertFalse(predictions.isna().any().any())
+                self.assertTrue(predictions.logistic_probability_up.between(0, 1).all())
+                folds = json.loads((run/'folds.json').read_text())
+                self.assertTrue(all(f['logistic']['converged'] for f in folds))
                 self.assertTrue(outcomes.index.equals(predictions.index))
                 self.assertFalse(outcomes.eligible_for_scoring.iloc[-1])
                 outputs.append((predictions, outcomes))
